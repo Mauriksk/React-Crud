@@ -1,15 +1,15 @@
 import React from 'react';
 
-const UserTable = ({ users }) => {
+const UserTable = ({ users, deleteUser, editRow }) => {
 
     console.log(users)
 
     return ( <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Actions</th>
+                <th>Nombre</th>
+                <th>NickName</th>
+                <th>Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -21,8 +21,14 @@ const UserTable = ({ users }) => {
                         <td>{ user.name }</td>
                         <td>{ user.username }</td>
                         <td>
-                            <button className="button muted-button">Edit</button>
-                            <button className="button muted-button">Delete</button>
+                            <button 
+                                className="button muted-button"
+                                onClick={ ()=> { editRow( user ) } }
+                            >Editar</button>
+                            <button 
+                                className="button muted-button"
+                                onClick={ ()=> { deleteUser( user.id ) } }
+                            >Borrar</button>
                         </td>
                     </tr>
                 ) )
